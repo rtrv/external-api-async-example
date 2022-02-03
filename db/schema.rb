@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_03_135928) do
+ActiveRecord::Schema.define(version: 2022_02_03_152936) do
 
   create_table "cars", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "external_requests", force: :cascade do |t|
+    t.string "state"
+    t.string "request_type"
+    t.string "payload"
+    t.integer "car_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id"], name: "index_external_requests_on_car_id"
   end
 
 end
